@@ -48,7 +48,7 @@ In addition, it includes a mode that allows you to search for a "flag" string in
 
 ## Examples of use
 
-### First example ~ TryHackMe room pwn101
+### 1️⃣ First example ~ TryHackMe room pwn101
 
 For this example, we are going to use GLUFS to get a foot and canary leak.
 
