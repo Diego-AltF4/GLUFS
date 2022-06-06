@@ -67,6 +67,8 @@ We will use the ```-b``` option to indicate the binary, the ``` -min``` option t
 
 For this example, we will use GLUFS to obtain the flag.
 
+The challenge we are going to solve is [Confused environment read from the 247CTF platform.](https://247ctf.com/dashboard).
+
 For this example we are not going to use binary. We only have an ip and port. Therefore, we are going to use the ```-ip``` option to indicate the address, ```-port``` to indicate the port, ```-flag``` to specify the start of the flag to look for. In addition, as we do not have binary, we have to indicate the architecture, in this case, x86-64 (-arch 64). We will also indicate the start of the iteration with ```-min``` and the end of the iteration with ```-max```. In addition, we are going to use the ```-s``` option to use ```%s``` instead of ```%p```.
 
 ```python
