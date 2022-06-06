@@ -43,3 +43,25 @@ In addition, it includes a mode that allows you to search for a "flag" string in
 | *--pie*     | Select this option to find the position where a pie leak is located. |
 | *--stack*     | Select this option to find the position where a stack leak is located. |
 | *--v*     | Select this option to set the verbose mode. |
+
+
+
+## Examples of use
+
+### First example
+
+For this example, we are going to use GLUFS to get a foot and canary leak.
+
+The binary we are going to take as an example is the one corresponding to challenge 7 of TryHackMe room pwn101 [TryHackMe room pwn101](https://tryhackme.com/room/pwn101).
+
+We will use the ```-b``` option to indicate the binary, the ``` -min``` option to indicate the initial value of the iteration and ```-max``` to indicate the final value of the iteration. In addition, we want to get information about the canaries and about pie. 
+
+```python
+./glufs.py -b ./pwn107.pwn107 -min 5 -max 15 --pie --canary
+```
+
+[![asciicast](https://asciinema.org/a/499913.svg)](https://asciinema.org/a/499913)
+
+
+
+
