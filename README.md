@@ -62,3 +62,15 @@ We will use the ```-b``` option to indicate the binary, the ``` -min``` option t
 
 [![asciicast](https://asciinema.org/a/UTAVBUK95n7SUTvDBPKFsXaSJ.svg)](https://asciinema.org/a/UTAVBUK95n7SUTvDBPKFsXaSJ)
 
+### 2️⃣ Second example ~ 247CTF Confused environment read
+
+For this example, we will use GLUFS to obtain the flag.
+
+For this example we are not going to use binary. We only have an ip and port. Therefore, we are going to use the ```-ip``` option to indicate the address, ```-port``` to indicate the port, ```-flag``` to specify the start of the flag to look for. In addition, as we do not have binary, we have to indicate the architecture, in this case, x86-64 (-arch 64). We will also indicate the start of the iteration with ```-min``` and the end of the iteration with ```-max```. In addition, we are going to use the ```-s``` option to use ```%s``` instead of ```%p```.
+
+```python
+./glufs.py -ip 3bcbadabd1a7e914.247ctf.com -port 50387 -flag 247CTF -arch 64 -min 1 -max 200 --s
+```
+![image](https://user-images.githubusercontent.com/55554183/172267389-6828599c-de59-4fb2-a3bb-a1460296db11.png)
+
+[![asciicast](https://asciinema.org/a/58rVZrDPVT4bQOf8uGXi1fnVQ.svg)](https://asciinema.org/a/58rVZrDPVT4bQOf8uGXi1fnVQ)
