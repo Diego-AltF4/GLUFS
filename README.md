@@ -59,6 +59,7 @@ We will use the ```-b``` option to indicate the binary, the ``` -min``` option t
 ```python
 ./glufs.py -b ./pwn107.pwn107 -min 5 -max 15 --pie --canary
 ```
+![image](https://user-images.githubusercontent.com/55554183/172267534-b101163d-f4af-4598-b675-80243de6ac62.png)
 
 [![asciicast](https://asciinema.org/a/UTAVBUK95n7SUTvDBPKFsXaSJ.svg)](https://asciinema.org/a/UTAVBUK95n7SUTvDBPKFsXaSJ)
 
