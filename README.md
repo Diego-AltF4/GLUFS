@@ -31,15 +31,15 @@ In addition, it includes a mode that allows you to search for a "flag" string in
 
 | Parameter    | Information |
 |:-------------|:-------------|
-| *-b*          | indicates the binary to be exploited (**mandatory parameter**). |
-| *-max*     | indicates maximum value to be tested. Range: (min, max). By default, max = 40 |
-| *-min*     | indicates minimum value to be tested. Range: (min, max). By default, min = 1 |
-| *-ip*     | indicates remote server's ip. |
-| *-port*     | indicates remote server's port. |
-| *-flag*     | indicates the start of the flag. |
-| *--s*     | indicates to use %s instead of %p. |
-| *--canary*     | indicates to find the position where a canary leak is located. |
-| *--leaks*     | prints all the leaks found. |
-| *--pie*     | indicates to find the position where a pie leak is located. |
-| *--stack*     | indicates to find the position where a stack leak is located. |
-| *--v*     | set the verbose mode. |
+| *-b*          | Select this option to indicate the binary to be exploited (**mandatory parameter**). |
+| *-max*     | Select this option to indicate the maximum value to be tested. Range: (min, max). By default, max = 40 |
+| *-min*     | Select this option to indicate the minimum value to be tested. Range: (min, max). By default, min = 1 |
+| *-ip*     | Select this option to specify the ip of the remote server. |
+| *-port*     | Select this option to specify the port of the remote server. |
+| *-flag*     | Select this option to indicate the start of the flag to search for. |
+| *--s*     | Select this option to use %s instead of %p. |
+| *--canary*     | Select this option to find the position where a canary leak is located. |
+| *--leaks*     | Select this option to print all the leaks found. |
+| *--pie*     | Select this option to find the position where a pie leak is located. |
+| *--stack*     | Select this option to find the position where a stack leak is located. |
+| *--v*     | Select this option to set the verbose mode. |
