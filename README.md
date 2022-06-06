@@ -60,7 +60,6 @@ We will use the ```-b``` option to indicate the binary, the ``` -min``` option t
 ./glufs.py -b ./pwn107.pwn107 -min 5 -max 15 --pie --canary
 ```
 
-[![asciicast](https://asciinema.org/a/499913.svg)](https://asciinema.org/a/499913?t=0)
-
+<script id="asciicast-UTAVBUK95n7SUTvDBPKFsXaSJ" src="https://asciinema.org/a/UTAVBUK95n7SUTvDBPKFsXaSJ.js" async></script>
 
 
