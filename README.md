@@ -31,7 +31,7 @@ In addition, it includes a mode that allows you to search for a "flag" string in
 
 | Parameter    | Information |
 |:-------------|:-------------|
-| *-b*          | Select this option to indicate the binary to be exploited (**mandatory parameter**). |
+| *-b*          | Select this option to indicate the binary to be exploited. |
 | *-max*     | Select this option to indicate the maximum value to be tested. Range: (min, max). By default, max = 40 |
 | *-min*     | Select this option to indicate the minimum value to be tested. Range: (min, max). By default, min = 1 |
 | *-ip*     | Select this option to specify the ip of the remote server. |
