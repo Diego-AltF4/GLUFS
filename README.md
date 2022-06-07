@@ -23,7 +23,7 @@
 
 
 GLUFS allows you to automate the tedious process of finding leaks using format string vulnerabilities. 
-It will allow you to find stack leaks, pie leaks, libc leaks, canary leaks and heap leaks, in each case indicating the payload providing the leak. 
+It will allow you to find stack leaks, pie leaks and canary leaks, in each case indicating the payload providing the leak. 
 In addition, it includes a mode that allows you to search for a "flag" string in the leaks. For this mode, the %s or %p specifier can be used. 
 
            
