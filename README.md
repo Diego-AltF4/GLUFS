@@ -77,3 +77,19 @@ For this example we are not going to use binary. We only have an ip and port. Th
 ![image](https://user-images.githubusercontent.com/55554183/172267389-6828599c-de59-4fb2-a3bb-a1460296db11.png)
 
 [![asciicast](https://asciinema.org/a/58rVZrDPVT4bQOf8uGXi1fnVQ.svg)](https://asciinema.org/a/58rVZrDPVT4bQOf8uGXi1fnVQ)
+
+### 3️⃣ Third example ~ PicoCTF flag leak
+
+For this example, we will use GLUFS to obtain the flag.
+
+The challenge we are going to solve is [flag leakfrom the PicoCTF platform](https://play.picoctf.org/practice/challenge/269?category=6&page=2).
+
+For this example, we will use the -ip option to indicate the server address, -port to indicate the server port, -b to indicate the binary, -flag to indicate the start of the flag, and finally, we specify the start and end of the iteration with -min and -max. 
+
+```python
+./glufs.py -ip saturn.picoctf.net  -port 50563 -b ./vuln  -flag picoCTF -min 20 -max 200
+```
+
+![image](https://user-images.githubusercontent.com/55554183/172270682-44c3a300-914c-42bd-8d1c-280c70934aed.png)
+
+[![asciicast](https://asciinema.org/a/EjytzjJcFeyszUVfe1QDBUyDD.svg)](https://asciinema.org/a/EjytzjJcFeyszUVfe1QDBUyDD)
