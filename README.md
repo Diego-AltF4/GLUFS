@@ -37,14 +37,13 @@ In addition, it includes a mode that allows you to search for a "flag" string in
 | *-ip*     | Select this option to specify the ip of the remote server. |
 | *-port*     | Select this option to specify the port of the remote server. |
 | *-flag*     | Select this option to indicate the start of the flag to search for. |
+| *-arch*     | Select this option to set the arch (32 or 64). |
 | *--s*     | Select this option to use %s instead of %p. |
 | *--canary*     | Select this option to find the position where a canary leak is located. |
 | *--leaks*     | Select this option to print all the leaks found. |
 | *--pie*     | Select this option to find the position where a pie leak is located. |
 | *--stack*     | Select this option to find the position where a stack leak is located. |
 | *--v*     | Select this option to set the verbose mode. |
-
-
 
 ## Examples of use
 
@@ -71,7 +70,7 @@ For this example, we will use GLUFS to obtain the flag.
 
 The challenge we are going to solve is [Confused environment read from the 247CTF platform](https://247ctf.com/dashboard).
 
-For this example we are not going to use binary. We only have an ip and port. Therefore, we are going to use the ```-ip``` option to indicate the address, ```-port``` to indicate the port, ```-flag``` to specify the start of the flag to look for. In addition, as we do not have binary, we have to indicate the architecture, in this case, x86-64 (-arch 64). We will also indicate the start of the iteration with ```-min``` and the end of the iteration with ```-max```. In addition, we are going to use the ```-s``` option to use ```%s``` instead of ```%p```.
+For this example we are not going to use binary. We only have an ip and port. Therefore, we are going to use the ```-ip``` option to indicate the address, ```-port``` to indicate the port, ```-flag``` to specify the start of the flag to look for. In addition, as we do not have binary, we have to indicate the architecture, in this case, x86-64 (`-arch 64`). We will also indicate the start of the iteration with ```-min``` and the end of the iteration with ```-max```. In addition, we are going to use the ```-s``` option to use ```%s``` instead of ```%p```.
 
 ```python
 ./glufs.py -ip 3bcbadabd1a7e914.247ctf.com -port 50387 -flag 247CTF -arch 64 -min 1 -max 200 --s
@@ -88,7 +87,7 @@ For this example, we will use GLUFS to obtain the flag.
 
 The challenge we are going to solve is [flag leak from the PicoCTF platform](https://play.picoctf.org/practice/challenge/269?category=6&page=2).
 
-For this example, we will use the -ip option to indicate the server address, -port to indicate the server port, -b to indicate the binary, -flag to indicate the start of the flag, and finally, we specify the start and end of the iteration with -min and -max. If you do not specify the --s option, the `%p` format will be used by default.
+For this example, we will use the `-ip` option to indicate the server address, `-port` to indicate the server port, `-b` to indicate the binary, `-flag` to indicate the start of the flag, and finally, we specify the start and end of the iteration with `-min` and `-max`. If you do not specify the `--s` option, the `%p` format will be used by default.
 
 ```python
 ./glufs.py -ip saturn.picoctf.net  -port 50563 -b ./vuln  -flag picoCTF -min 20 -max 200
