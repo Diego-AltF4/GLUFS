@@ -84,7 +84,7 @@ For this example, we will use GLUFS to obtain the flag.
 
 The challenge we are going to solve is [flag leak from the PicoCTF platform](https://play.picoctf.org/practice/challenge/269?category=6&page=2).
 
-For this example, we will use the -ip option to indicate the server address, -port to indicate the server port, -b to indicate the binary, -flag to indicate the start of the flag, and finally, we specify the start and end of the iteration with -min and -max. 
+For this example, we will use the -ip option to indicate the server address, -port to indicate the server port, -b to indicate the binary, -flag to indicate the start of the flag, and finally, we specify the start and end of the iteration with -min and -max. If you do not specify the --s option, the `%p` format will be used by default.
 
 ```python
 ./glufs.py -ip saturn.picoctf.net  -port 50563 -b ./vuln  -flag picoCTF -min 20 -max 200
