@@ -105,7 +105,8 @@ For this example, we will use the -ip option to indicate the server address, -po
 ```python
 git clone https://github.com/Diego-AltF4/GLUFS.git
 cd GLUFS/
-pip3 install requirements.txt
+pip3 install -r requirements.txt
+chmod +x ./glufs.py 
 ```
 
 ## Configuration:
