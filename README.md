@@ -61,6 +61,8 @@ We will use the ```-b``` option to indicate the binary, the ``` -min``` option t
 ```
 ![image](https://user-images.githubusercontent.com/55554183/172267534-b101163d-f4af-4598-b675-80243de6ac62.png)
 
+### Demo:
+
 [![asciicast](https://asciinema.org/a/UTAVBUK95n7SUTvDBPKFsXaSJ.svg)](https://asciinema.org/a/UTAVBUK95n7SUTvDBPKFsXaSJ)
 
 ### 2️⃣ Second example ~ 247CTF Confused environment read
@@ -75,6 +77,8 @@ For this example we are not going to use binary. We only have an ip and port. Th
 ./glufs.py -ip 3bcbadabd1a7e914.247ctf.com -port 50387 -flag 247CTF -arch 64 -min 1 -max 200 --s
 ```
 ![image](https://user-images.githubusercontent.com/55554183/172267389-6828599c-de59-4fb2-a3bb-a1460296db11.png)
+
+### Demo:
 
 [![asciicast](https://asciinema.org/a/58rVZrDPVT4bQOf8uGXi1fnVQ.svg)](https://asciinema.org/a/58rVZrDPVT4bQOf8uGXi1fnVQ)
 
@@ -91,5 +95,7 @@ For this example, we will use the -ip option to indicate the server address, -po
 ```
 
 ![image](https://user-images.githubusercontent.com/55554183/172270682-44c3a300-914c-42bd-8d1c-280c70934aed.png)
+
+### Demo:
 
 [![asciicast](https://asciinema.org/a/EjytzjJcFeyszUVfe1QDBUyDD.svg)](https://asciinema.org/a/EjytzjJcFeyszUVfe1QDBUyDD)
