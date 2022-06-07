@@ -29,7 +29,6 @@ if __name__ == "__main__":
 
 	print_banner()
 
-	sleep(1)
 	parser = argparse.ArgumentParser(description="Tool to identify leaks using format string vulnerability.")
 
 	parser.add_argument('-b', action="store", dest="binary", required=False, help="Select this option to indicate the binary to be exploited (mandatory parameter).")
