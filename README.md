@@ -50,7 +50,7 @@ In addition, it includes a mode that allows you to search for a "flag" string in
 
 ### 1️⃣ First example ~ TryHackMe room pwn101
 
-For this example, we are going to use GLUFS to get a foot and canary leak.
+For this example, we are going to use GLUFS to get a pie and canary leak.
 
 The binary we are going to take as an example is the one corresponding to challenge 7 of TryHackMe room pwn101 [TryHackMe room pwn101](https://tryhackme.com/room/pwn101).
 
