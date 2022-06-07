@@ -82,7 +82,7 @@ For this example we are not going to use binary. We only have an ip and port. Th
 
 For this example, we will use GLUFS to obtain the flag.
 
-The challenge we are going to solve is [flag leakfrom the PicoCTF platform](https://play.picoctf.org/practice/challenge/269?category=6&page=2).
+The challenge we are going to solve is [flag leak from the PicoCTF platform](https://play.picoctf.org/practice/challenge/269?category=6&page=2).
 
 For this example, we will use the -ip option to indicate the server address, -port to indicate the server port, -b to indicate the binary, -flag to indicate the start of the flag, and finally, we specify the start and end of the iteration with -min and -max. 
 
