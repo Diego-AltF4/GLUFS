@@ -99,3 +99,29 @@ For this example, we will use the -ip option to indicate the server address, -po
 ### Demo:
 
 [![asciicast](https://asciinema.org/a/EjytzjJcFeyszUVfe1QDBUyDD.svg)](https://asciinema.org/a/EjytzjJcFeyszUVfe1QDBUyDD)
+
+## Installation:
+
+```python
+git clone https://github.com/Diego-AltF4/GLUFS.git
+cd GLUFS/
+pip3 install requirements.txt
+```
+
+## Configuration:
+
+It is very important that you modify the code to be able to adapt it to your binary/challenge. For this, there are two delimited sections of the code in which you have to make changes in order to obtain the leak of the format string as well as to configure when the payload should be sent.
+
+Examples:
+For the picoCTF challenge explained above, the following configuration is used:
+
+```python
+#######################################################################
+#      This is the part that you must modify to fit your binary.      #
+#######################################################################
+p.sendlineafter(b'>>', payload)
+p.recvuntil(b'-')
+leak = p.recv().strip(b'\n')
+#print(leak) ## For debugging errors
+#######################################################################	
+```
