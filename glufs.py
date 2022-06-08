@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
 	if (results.ip is not None and results.port is not None):
 		
-		assert ((results.all_leaks == False and results.pie_search == False)), "Remember that you cannot search for pie leaks or stack leaks remotely. You can only find them locally. Almost always the offsets are kept, so you can use the payload that GLUFS pulls for you in local."
+		assert ((results.stack_search == False and results.pie_search == False )), "Remember that you cannot search for pie leaks or stack leaks remotely. You can only find them locally. Almost always the offsets are kept, so you can use the payload that GLUFS pulls for you in local."
 
 	max = 40 ## Default value
 	min = 1 ## Default value
