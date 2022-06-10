@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
+import pwnlib.args
+pwnlib.args.free_form = False
+import argparse
 from pwn import *
 from termcolor import colored
-import argparse
 import sys
-
 
 
 def print_banner(title=""):
