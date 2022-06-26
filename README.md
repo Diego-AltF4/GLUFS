@@ -1,3 +1,6 @@
+![visitor badge](https://visitor-badge.glitch.me/badge?page_id=diegoaltf4_glufs.visitor-badge)
+
+
 <h1 align="center">
   <br>
     Getting Leaks Using Format String.
