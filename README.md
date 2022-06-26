@@ -1,4 +1,5 @@
 ![visitor badge](https://visitor-badge.glitch.me/badge?page_id=diegoaltf4_glufs.visitor-badge)
+![GitHub last commit (master)](https://img.shields.io/github/last-commit/Diego-AltF4/GLUFS)
 
 
 <h1 align="center">
